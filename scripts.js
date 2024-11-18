@@ -31,7 +31,7 @@ function moveRain(e) {
 
 // Typing and Deleting Effect for the Title
 const titleElement = document.querySelector('.title');
-const text = "Severity's BIO";
+const text = "Severity's Bio";
 let index = 0;
 let isDeleting = false;
 
