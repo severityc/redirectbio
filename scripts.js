@@ -23,12 +23,12 @@ function moveRain(e) {
 
     const drops = document.querySelectorAll('.drop');
     drops.forEach(drop => {
-        // Calculate the movement of each raindrop in relation to the mouse
-        const dropSpeedX = (mouseX - drop.offsetLeft) / 100;
-        const dropSpeedY = (mouseY - drop.offsetTop) / 100;
+        // Calculate the movement of each raindrop based on the mouse X position
+        const direction = (mouseX - drop.offsetLeft) / 100; // Left or right movement
+        const dropSpeedY = (mouseY - drop.offsetTop) / 100; // Falling speed (vertical)
 
         // Apply the calculated movement
-        drop.style.transform = `translate(${dropSpeedX}px, ${dropSpeedY}px)`;
+        drop.style.transform = `translate(${direction}px, ${dropSpeedY}px)`;
     });
 }
 
