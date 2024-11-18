@@ -70,3 +70,24 @@ const countdownInterval = setInterval(() => {
 createRain();
 typeEffect();
 window.addEventListener('mousemove', moveRain);
+
+// Ensure rain continues to fall even after it's initially created
+function animateRain() {
+    const drops = document.querySelectorAll('.drop');
+    drops.forEach(drop => {
+        const speed = parseFloat(drop.style.animationDuration);
+        let currentPos = drop.getBoundingClientRect();
+        
+        // Adjust the drop position continuously to simulate falling and interaction
+        if (currentPos.top > window.innerHeight) {
+            drop.style.top = '-20px'; // Reset drop to the top once it falls off-screen
+            drop.style.left = `${Math.random() * window.innerWidth}px`; // Randomize horizontal position
+        } else {
+            drop.style.top = `${currentPos.top + speed * 2}px`; // Update vertical position for falling
+        }
+    });
+
+    requestAnimationFrame(animateRain); // Keep animating the rain
+}
+
+animateRain(); // Start the rain animation
