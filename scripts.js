@@ -23,15 +23,18 @@ function moveRain(e) {
 
     const drops = document.querySelectorAll('.drop');
     drops.forEach(drop => {
+        // Calculate the movement of each raindrop in relation to the mouse
         const dropSpeedX = (mouseX - drop.offsetLeft) / 100;
         const dropSpeedY = (mouseY - drop.offsetTop) / 100;
+
+        // Apply the calculated movement
         drop.style.transform = `translate(${dropSpeedX}px, ${dropSpeedY}px)`;
     });
 }
 
 // Typing and Deleting Effect for the Title
 const titleElement = document.querySelector('.title');
-const text = "Severity's Bio";
+const text = "Severity's BIO";
 let index = 0;
 let isDeleting = false;
 
