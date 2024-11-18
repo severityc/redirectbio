@@ -1,113 +1,118 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
+/* General Styles */
 body {
-    background-color: black;
-    color: white;
-    font-family: Arial, sans-serif;
-    text-align: center;
+    margin: 0;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+    color: red;
+    background-color: black;
+    position: relative;
 }
 
+footer {
+    margin-top: 20px;
+    font-size: 14px;
+    color: red;
+}
+
+/* Rain Effect */
 .rain {
     position: absolute;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
+    width: 100%;
+    height: 100%;
     pointer-events: none;
-    z-index: -1;
 }
 
 .drop {
     position: absolute;
     background-color: red;
     border-radius: 50%;
-    opacity: 0.8;
+    opacity: 0.7;
     animation: fall linear infinite;
 }
 
 @keyframes fall {
     0% {
-        transform: translateY(0);
+        transform: translateY(-100vh);
+        opacity: 0.7;
     }
     100% {
         transform: translateY(100vh);
+        opacity: 0.7;
     }
 }
 
-.embed-container {
-    position: absolute;
-    top: 20%;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 1;
-}
-
-.embed {
-    background-color: rgba(0, 0, 0, 0.8);
-    border: 2px solid red;
-    border-radius: 10px;
-    padding: 20px;
-    width: 300px;
-    box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
-}
-
-.embed-title {
-    color: red;
-    font-size: 24px;
-    margin-bottom: 10px;
-}
-
-.embed-description {
-    font-size: 16px;
-    color: white;
-}
-
-.embed-image {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    margin-top: 10px;
-}
-
+/* Typing Animation for Title */
 .title {
     font-size: 36px;
     color: red;
-    font-weight: bold;
-    margin-top: 150px;
+    text-align: center;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 2px solid red;
 }
 
+/* Button Styles */
 .redirect-button {
+    position: relative;
+    padding: 20px 40px;
+    font-size: 24px;
+    color: #fff;
     background-color: red;
-    color: white;
     border: none;
-    padding: 15px 25px;
-    font-size: 18px;
+    border-radius: 12px;
     cursor: pointer;
-    border-radius: 5px;
-    margin-top: 30px;
-    transition: all 0.3s ease;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 10px rgba(255, 0, 0, 0.5);
+    margin-top: 20px;
+}
+
+.redirect-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.3);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.redirect-button:hover::before {
+    opacity: 1;
 }
 
 .redirect-button:hover {
-    background-color: darkred;
+    transform: scale(1.1);
+    box-shadow: 0 6px 15px rgba(255, 0, 0, 0.7);
 }
 
-.footer {
-    position: absolute;
-    bottom: 10px;
-    width: 100%;
-    text-align: center;
-    font-size: 14px;
+.redirect-button:active {
+    transform: scale(1.05);
+    box-shadow: 0 3px 8px rgba(255, 0, 0, 0.6);
+}
+
+/* Countdown Message */
+.message {
+    font-size: 24px;
     color: red;
 }
 
-#countdown {
-    font-size: 20px;
-    color: white;
-    font-weight: bold;
+/* Typing and Erasing Animations */
+@keyframes typing {
+    0% { width: 0; }
+    100% { width: 13ch; }
+}
+
+@keyframes erasing {
+    0% { width: 13ch; }
+    100% { width: 0; }
 }
